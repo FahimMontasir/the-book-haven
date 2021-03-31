@@ -1,10 +1,29 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Admin from './components/Admin/Admin';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 const App = () => {
   return (
-    <div>
-      <h1>hello bookshop</h1>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+
+        </Route>
+        <Route path="/admin">
+          <Admin></Admin>
+        </Route>
+        <Route path="/">
+
+        </Route>
+        <Route path="/">
+
+        </Route>
+      </Switch>
+    </Router>
   );
 };
 
