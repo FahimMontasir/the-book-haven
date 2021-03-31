@@ -13,6 +13,16 @@ const AddBooks = () => {
     const { bookName, authorName, price } = data;
     const ProductDetails = { bookName, authorName, price, "img": imgUrl.display_url }
     console.log(ProductDetails)
+    fetch('https://httpbin.org/post', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(ProductDetails)
+    })
+      .then(result => console.log(result))
+      .catch(res => console.log(res))
   };
 
   //to store image in imageBB 

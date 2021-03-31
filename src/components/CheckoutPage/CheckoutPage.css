@@ -1,0 +1,10 @@
+.checkout-body {
+  margin-top: 5rem;
+  background-color: rgb(238, 236, 236);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.checkout-btn {
+  text-align: right;
+  margin-right: 5rem;
+}

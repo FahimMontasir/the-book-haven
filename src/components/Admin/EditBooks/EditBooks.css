@@ -1,0 +1,14 @@
+.form-card-edit {
+  margin: 5rem;
+  padding: 2rem;
+  background-color: lightgray;
+  border-radius: 1rem;
+  width: 400px;
+}
+.form-card-edit input {
+  margin: 1rem;
+  padding: 0.5rem;
+  width: 300px;
+  border: none;
+  border-radius: 5px;
+}
