@@ -22,7 +22,7 @@ const Admin = () => {
             <Route path={`${path}/add-books`}>
               <AddBooks></AddBooks>
             </Route>
-            <Route path={`${path}/edit-books`}>
+            <Route path={`${path}/edit-books/:editId`}>
               <EditBooks></EditBooks>
             </Route>
             <Route exact path={`${path}`}>

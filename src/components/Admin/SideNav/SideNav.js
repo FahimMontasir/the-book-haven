@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSteamSquare } from '@fortawesome/free-brands-svg-icons';
 import { faEdit, faPlusSquare } from '@fortawesome/free-solid-svg-icons'
 import './SideNav.css'
+import { Button } from 'react-bootstrap';
 
 const SideNav = () => {
   const { url } = useRouteMatch()
@@ -26,12 +27,13 @@ const SideNav = () => {
           </MenuItem>
           <MenuItem icon={<FontAwesomeIcon icon={faEdit} size="2x" />}>
             Edit Books
-            <Link to={`${url}/edit-books`} />
+            <Link to={`${url}/edit-books/noValidId`} />
           </MenuItem>
         </Menu>
       </SidebarContent>
       <SidebarFooter>
         <p className="text-center">© 2021 Fahim All Rights Reserved</p>
+        <Button as={Link} to="/" variant="outline-light">Back to Home</Button>
       </SidebarFooter>
     </ProSidebar>
   );

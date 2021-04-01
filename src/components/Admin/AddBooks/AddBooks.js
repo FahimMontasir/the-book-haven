@@ -12,8 +12,7 @@ const AddBooks = () => {
   const onSubmit = data => {
     const { bookName, authorName, price } = data;
     const ProductDetails = { bookName, authorName, price, "img": imgUrl.display_url }
-    console.log(ProductDetails)
-    fetch('https://httpbin.org/post', {
+    fetch('http://localhost:5000/add-book', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
