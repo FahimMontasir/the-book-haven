@@ -15,9 +15,8 @@ const AddBooks = () => {
   const onSubmit = data => {
     const { bookName, authorName, price } = data;
     const ProductDetails = { bookName, authorName, price }
-    console.log(ProductDetails)
-    fetch('https://httpbin.org/post', {
-      method: 'POST',
+    fetch(`http://localhost:5000/update/${selectedToEdit?._id}`, {
+      method: 'PATCH',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -51,7 +50,7 @@ const AddBooks = () => {
             <p>name: {selectedToEdit?.bookName}</p>
             <p>author: {selectedToEdit?.authorName}</p>
             <p>price: ${selectedToEdit?.price}</p>
-            <p>price: ${selectedToEdit?._id}</p>
+            <p>key: {selectedToEdit?._id}</p>
           </Jumbotron>
         </Col>
       </Row>

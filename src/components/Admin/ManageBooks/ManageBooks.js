@@ -7,10 +7,14 @@ import { booksContext } from '../../../App';
 import './ManageBooks.css'
 import { Link } from 'react-router-dom';
 const ManageBooks = () => {
-  const [books] = useContext(booksContext)
+  const [books, setBooks] = useContext(booksContext)
   //to delete from the database
-  const handleDelete = () => {
-    console.log('delete clicked')
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/delete/${id}`, {
+      method: "DELETE",
+    })
+    const WithoutDeletedBooks = books.filter(book => book._id !== id)
+    setBooks(WithoutDeletedBooks)
   }
   return (
     <div>
@@ -28,17 +32,17 @@ const ManageBooks = () => {
           <tbody>
             {
               books.map(book => {
-                const { bookName, authorName, price, _id: id } = book;
+                const { bookName, authorName, price, _id } = book;
                 return (
-                  <tr key={id}>
+                  <tr key={_id}>
                     <td>{bookName}</td>
                     <td>{authorName}</td>
                     <td>${price}</td>
                     <td>
-                      <Button as={Link} to={`/admin/edit-books/${id}`} variant="outline-info">
+                      <Button as={Link} to={`/admin/edit-books/${_id}`} variant="outline-info">
                         <FontAwesomeIcon icon={faEdit} size="1x" />
                       </Button>
-                      <Button onClick={handleDelete} variant="outline-danger" className="ml-3">
+                      <Button onClick={() => handleDelete(_id)} variant="outline-danger" className="ml-3">
                         <FontAwesomeIcon icon={faTrash} size="1x" />
                       </Button>
                     </td>
