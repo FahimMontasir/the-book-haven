@@ -23,7 +23,12 @@ const HomeNav = () => {
             </Nav.Link>
             {
               loggedInUser.name ?
-                <h5>{loggedInUser.name}</h5> :
+                <h5 style={{ backgroundColor: "lightgrey", padding: '5px', borderRadius: "5px" }}>
+                  {loggedInUser.name}
+                  <img src={loggedInUser.userImg} alt="user"
+                    style={{ width: "30px", borderRadius: "50%" }}
+                  />
+                </h5> :
                 <Nav.Link as={Link} to="/login" className="font-weight-bold btn btn-outline-success">Login</Nav.Link>
             }
           </Nav>

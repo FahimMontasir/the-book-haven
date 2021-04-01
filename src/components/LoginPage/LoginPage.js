@@ -25,7 +25,7 @@ const LoginPage = () => {
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((result) => {
         const { email } = result.user;
-        setLoggedInUser({ name, email })
+        setLoggedInUser({ name, email, userImg: "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png" })
         history.replace(from);
       })
   };
@@ -35,8 +35,8 @@ const LoginPage = () => {
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(googleProvider)
       .then((result) => {
-        const { displayName: name, email } = result.user;
-        setLoggedInUser({ name, email });
+        const { displayName: name, email, photoURL: userImg } = result.user;
+        setLoggedInUser({ name, email, userImg });
         history.replace(from);
       })
   }

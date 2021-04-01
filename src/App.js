@@ -14,7 +14,7 @@ import ProtectedRoute from './components/LoginPage/ProtectedRoute/ProtectedRoute
 export const booksContext = createContext();
 const App = () => {
   const [books, setBooks] = useState([]);
-  const [loggedInUser, setLoggedInUser] = useState({ name: "", email: "" })
+  const [loggedInUser, setLoggedInUser] = useState({ name: "", email: "", userImg: "" })
   return (
     <booksContext.Provider value={[books, setBooks, loggedInUser, setLoggedInUser]}>
       <Router>
