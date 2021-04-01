@@ -3,17 +3,32 @@ import { Badge, Button, Container, Table } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import HomeNav from '../Home/HomeNav/HomeNav';
 import './CheckoutPage.css'
+import successUrl from "../../image/success.gif"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { booksContext } from '../../App';
+
 const CheckoutPage = () => {
   const [books, setBooks, loggedInUser] = useContext(booksContext);
   const { id } = useParams();
-  const [checkoutDetails, setCheckoutDetails] = useState({});
+  const [successImg, setSuccessImg] = useState(false);
+
   const selectedBook = books.find(book => book._id === id);
+  const bookData = { authorName: selectedBook?.authorName, bookName: selectedBook?.bookName, price: selectedBook?.price, imgUrl: selectedBook?.img }
+
+
   //checkout 
   const handleCheckout = () => {
-    console.log('clicked', selectedBook, loggedInUser, new Date())
+    const userAllData = { ...bookData, ...loggedInUser, date: new Date().toLocaleDateString() }
+    fetch("http://localhost:5000/user-data", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userAllData)
+    })
+    setSuccessImg(true)
   }
   return (
     <div>
@@ -21,7 +36,7 @@ const CheckoutPage = () => {
       <Container className="checkout-body">
         <h3>Checkout {id === "noId" ?
           <Badge pill variant="warning"><FontAwesomeIcon icon={faTimes} /></Badge> :
-          <Badge pill variant="success"> selected for place order <FontAwesomeIcon icon={faCheck} /></Badge>}
+          <Badge pill variant="success"> {successImg ? "order placed" : "selected for place order"} <FontAwesomeIcon icon={faCheck} /></Badge>}
         </h3>
         <Table responsive="md">
           <thead>
@@ -43,16 +58,21 @@ const CheckoutPage = () => {
             </tr>
           </tbody>
         </Table>
-        <div className="checkout-btn">
-          {id !== "noId" ?
-            <Button onClick={handleCheckout} variant="success">
-              place order
+        {
+          successImg ?
+            <div className="text-center">
+              <img src={successUrl} alt="success" style={{ width: "140px", height: "100px" }} />
+            </div>
+            :
+            <div className="checkout-btn">
+              {id !== "noId" ?
+                <Button onClick={handleCheckout} variant="success">
+                  place order
             </Button> :
-            <Button variant="warning" disabled>
-              Invalid checkout
-            </Button>
-          }
-        </div>
+                <Button variant="warning" disabled>
+                  Invalid checkout
+            </Button>}
+            </div>}
       </Container>
     </div>
   );

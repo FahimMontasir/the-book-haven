@@ -8,3 +8,6 @@
   text-align: right;
   margin-right: 5rem;
 }
+.after-checkout-body {
+  background-image: url("../../image/success.gif");
+}
