@@ -12,7 +12,7 @@ const AddBooks = () => {
   const onSubmit = data => {
     const { bookName, authorName, price } = data;
     const ProductDetails = { bookName, authorName, price, "img": imgUrl.display_url }
-    fetch('http://localhost:5000/add-book', {
+    fetch('https://cherry-crisp-38797.herokuapp.com/add-book', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

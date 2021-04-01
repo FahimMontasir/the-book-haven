@@ -20,7 +20,7 @@ const CheckoutPage = () => {
   //checkout 
   const handleCheckout = () => {
     const userAllData = { ...bookData, ...loggedInUser, date: new Date().toLocaleDateString() }
-    fetch("http://localhost:5000/user-data", {
+    fetch("https://cherry-crisp-38797.herokuapp.com/user-data", {
       method: "POST",
       headers: {
         'Accept': 'application/json',

@@ -7,7 +7,7 @@ import HomeNav from './HomeNav/HomeNav';
 const Home = () => {
   const [books, setBooks] = useContext(booksContext)
   useEffect(() => {
-    fetch("http://localhost:5000/all-books")
+    fetch("https://cherry-crisp-38797.herokuapp.com/all-books")
       .then(res => res.json())
       .then(data => setBooks(data));
   }, [setBooks])

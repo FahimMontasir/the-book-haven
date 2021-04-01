@@ -15,7 +15,7 @@ const AddBooks = () => {
   const onSubmit = data => {
     const { bookName, authorName, price } = data;
     const ProductDetails = { bookName, authorName, price }
-    fetch(`http://localhost:5000/update/${selectedToEdit?._id}`, {
+    fetch(`https://cherry-crisp-38797.herokuapp.com/update/${selectedToEdit?._id}`, {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',

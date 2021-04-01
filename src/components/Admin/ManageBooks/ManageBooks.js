@@ -10,7 +10,7 @@ const ManageBooks = () => {
   const [books, setBooks] = useContext(booksContext)
   //to delete from the database
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/delete/${id}`, {
+    fetch(`https://cherry-crisp-38797.herokuapp.com/delete/${id}`, {
       method: "DELETE",
     })
     const WithoutDeletedBooks = books.filter(book => book._id !== id)
