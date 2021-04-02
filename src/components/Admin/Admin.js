@@ -2,7 +2,6 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Route, Switch, useRouteMatch } from 'react-router';
 import SideNav from './SideNav/SideNav';
-import './Admin.css'
 import AddBooks from './AddBooks/AddBooks';
 import ManageBooks from './ManageBooks/ManageBooks'
 import EditBooks from './EditBooks/EditBooks'
